@@ -7,13 +7,17 @@ Led leds[] = {Led(17), Led(16), Led(4), Led(0), Led(2), Led(15)};
 UltrasonicSensor sensor(5, 18);
 
 int activeLedIndex = -1;
+int medicionCount = 0;
 
 void setup() {
+    Serial.begin(115200);
+    Serial.println("Inicializando..."); // Mensaje de prueba
     sensor.init();
     
     for (int i = 0; i < 6; i++) {
         leds[i].off();
     }
+    // delay(100);
 }
 
 void loop() {
@@ -28,8 +32,13 @@ void loop() {
         lastMeasurement = currentTime;
         
         float distance = sensor.getDistance();
-        
-        Serial.print("Distancia: ");
+
+        medicionCount++;
+        Serial.print("Medición #");
+        Serial.print(medicionCount);
+        Serial.print(", Distancia Real: ");
+        Serial.print("10 cm");
+        Serial.print(", Distancia Medida: ");
         Serial.print(distance);
         Serial.println(" cm");
         

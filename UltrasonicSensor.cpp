@@ -8,7 +8,6 @@ UltrasonicSensor::UltrasonicSensor(byte trig, byte echo) {
 void UltrasonicSensor::init() {
     pinMode(triggerPin, OUTPUT);
     pinMode(echoPin, INPUT);
-    Serial.begin(9600);
 }
 
 float UltrasonicSensor::getDistance() {
